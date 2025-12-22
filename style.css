@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  touch-action: none;
+}
+
+body {
+  background: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.pause-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 22px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #444;
+  color: white;
+  z-index: 10;
+}
+
+.pause-btn:active {
+  background: #666;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  background: #222;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.controls button {
+  font-size: 30px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  border: none;
+  background: #444;
+  color: white;
+}
+
+.controls button:active {
+  background: #666;
+}

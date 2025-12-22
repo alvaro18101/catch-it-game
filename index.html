@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Mini Juego</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+  <button id="pauseBtn" class="pause-btn">⏸</button>
+  <div class="hud">
+    <span>⭐ Puntaje: <strong id="score">0</strong></span>
+    <span>❤️ Vidas: <strong id="lives">3</strong></span>
+  </div>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <div class="controls">
+    <button id="leftBtn">⬅</button>
+    <button id="rightBtn">➡</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
