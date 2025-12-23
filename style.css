@@ -55,6 +55,7 @@ canvas {
   border: none;
   background: #444;
   color: white;
+  user-select: none;
 }
 
 .controls button:active {
