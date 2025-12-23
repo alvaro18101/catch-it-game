@@ -13,10 +13,10 @@ body {
 }
 
 .pause-btn {
-  position: absolute;
-  top: 10px;
+  /* position: absolute; */
+  /* top: 10px;
   left: 10px;
-  font-size: 22px;
+  font-size: 22px; */
   padding: 8px 12px;
   border-radius: 8px;
   border: none;
@@ -35,7 +35,12 @@ canvas {
   background: #222;
 }
 
+.top-buttons {
+  display: flex;
+}
+
 .hud {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
