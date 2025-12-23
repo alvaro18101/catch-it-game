@@ -4,18 +4,40 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight * 0.75;
 
+// =====================
+// IMÁGENES
+// =====================
+const playerImg = new Image();
+playerImg.src = "assets/jin-cube.jpg";
+
+const itemImg = new Image();
+itemImg.src = "assets/bt21.png";
+
+// =====================
 // HUD
+// =====================
 const scoreEl = document.getElementById("score");
 const livesEl = document.getElementById("lives");
 const pauseBtn = document.getElementById("pauseBtn");
 
-// Estado del juego
+// =====================
+// ESTADO DEL JUEGO
+// =====================
 let score = 0;
 let lives = 3;
 let gameOver = false;
 let paused = false;
 
-// Personaje
+// =====================
+// DIFICULTAD PROGRESIVA
+// =====================
+let baseItemSpeed = 4;
+const speedIncreaseEvery = 20;
+const speedIncrement = 1;
+
+// =====================
+// PERSONAJE
+// =====================
 const player = {
   width: 60,
   height: 60,
@@ -24,10 +46,14 @@ const player = {
   speed: 7
 };
 
-// Objetos que caen
+// =====================
+// OBJETOS
+// =====================
 let items = [];
 
-// Controles
+// =====================
+// CONTROLES
+// =====================
 let moveLeft = false;
 let moveRight = false;
 
@@ -43,7 +69,7 @@ function createItem() {
     x: Math.random() * (canvas.width - 30),
     y: -30,
     size: 30,
-    speed: 4 + Math.random() * 2
+    speed: baseItemSpeed + Math.random() * 2
   });
 }
 
@@ -65,15 +91,13 @@ function togglePause() {
 
 // Dibujar jugador
 function drawPlayer() {
-  ctx.fillStyle = "cyan";
-  ctx.fillRect(player.x, player.y, player.width, player.height);
+  ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
 }
 
 // Dibujar objetos
 function drawItems() {
-  ctx.fillStyle = "gold";
   items.forEach(item => {
-    ctx.fillRect(item.x, item.y, item.size, item.size);
+    ctx.drawImage(itemImg, item.x, item.y, item.size, item.size);
   });
 }
 
@@ -95,6 +119,12 @@ function update() {
     if (isColliding(player, item)) {
       score++;
       scoreEl.textContent = score;
+
+      // Aumentar dificultad cada 20 puntos
+      if (score % speedIncreaseEvery === 0) {
+        baseItemSpeed += speedIncrement;
+      }
+
       items.splice(index, 1);
     }
 
@@ -172,5 +202,7 @@ document.getElementById("rightBtn").addEventListener("touchend", () => moveRight
 // =====================
 setInterval(createItem, 1000);
 
-// Iniciar juego
+// =====================
+// INICIAR
+// =====================
 gameLoop();
